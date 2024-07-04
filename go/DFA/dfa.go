@@ -1,3 +1,5 @@
+///*  DFA, which accepts binary strings containing an even number of 0s: */
+
 package main
 
 import "fmt"

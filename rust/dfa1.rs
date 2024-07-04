@@ -1,5 +1,4 @@
-
-/*  DFA, which accepts binary strings containing an even number of 0s: */
+/* construct a dfa that accepts set of all strings over {0,1} of length 2 */
 
 use std::collections::HashMap;
 
@@ -52,16 +51,15 @@ impl DFA {
 fn main() {
     let mut transition: HashMap<(String, char), String> = HashMap::new();
     transition.insert(("q0".to_string(), '0'), "q1".to_string());
-    transition.insert(("q0".to_string(), '1'), "q0".to_string());
-    transition.insert(("q1".to_string(), '0'), "q0".to_string());
-    transition.insert(("q1".to_string(), '1'), "q1".to_string());
+    transition.insert(("q0".to_string(), '1'), "q1".to_string());
+    transition.insert(("q1".to_string(), '0'), "q2".to_string());
+    transition.insert(("q1".to_string(), '1'), "q2".to_string());
 
-    let accept_states = vec!["q0"];
+    let accept_states = vec!["q2"];
     let mut dfa = DFA::new("q0", accept_states, transition);
 
     let test_strings = vec![
-        "0", "1", "00", "01", "10", "11",
-        "000", "001", "010", "011", "100", "101", "110", "111",
+        "0", "1", "00", "01", "10", "11", "000", "001", "010", "011", "100", "101", "110", "111"
     ];
 
     for s in test_strings {
